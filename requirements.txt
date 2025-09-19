@@ -1,0 +1,49 @@
+# ============================
+# Core Framework
+# ============================
+fastapi
+uvicorn[standard]
+
+# ============================
+# Database
+# ============================
+sqlalchemy
+alembic
+asyncpg
+ 
+
+# ============================
+# Security & Auth
+# ============================
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+email-validator
+
+# ============================
+# LDAP (Active Directory)
+# ============================
+python-ldap
+
+# ============================
+# Face Recognition (InsightFace + AI)
+# ============================
+insightface
+onnxruntime-gpu # se tiver CUDA configurado
+numpy
+opencv-python
+
+# ============================
+# Utils
+# ============================
+pydantic-settings
+python-dotenv
+loguru
+
+# ============================
+# Dev Tools
+# ============================
+httpx
+pytest
+black
+isort
