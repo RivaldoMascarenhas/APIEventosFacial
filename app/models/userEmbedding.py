@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, ForeignKey, LargeBinary, DateTime
-from sqlalchemy.dialects.postgresql import VECTOR
+from pgvector.sqlalchemy import Vector
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
@@ -9,7 +9,7 @@ class UserEmbedding(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
-    embedding = Column(VECTOR(512))  # InsightFace default = 512 dims
+    embedding = Column(Vector(512))  # InsightFace default = 512 dims
     image = Column(LargeBinary, nullable=True)  # guarda a imagem original
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
