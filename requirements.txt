@@ -10,6 +10,7 @@ uvicorn[standard]
 sqlalchemy
 alembic
 asyncpg
+pgvector
  
 
 # ============================
