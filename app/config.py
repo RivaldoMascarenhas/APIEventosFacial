@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
+from passlib.context import CryptContext
+
 
 # Carrega variáveis do arquivo .env automaticamente
 load_dotenv()
@@ -12,8 +14,8 @@ class Settings(BaseSettings):
     DB_PORT: int = 5432
     DB_NAME: str
 
-    # Segurança (exemplo para JWT depois)
-    SECRET_KEY: str = "supersecretkey"
+    # Segurança e Autenticação
+    SECRET_KEY: str 
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
@@ -24,3 +26,6 @@ class Settings(BaseSettings):
 
 # Instância global para usar no projeto
 settings = Settings()
+
+#contexto de criptografia
+bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
