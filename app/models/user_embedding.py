@@ -22,7 +22,8 @@ class UserEmbedding(Base):
         preview = str(self.embedding[:5]) + "..." if self.embedding is not None else None
         return f"UserEmbedding(id={self.id}, user_id={self.user_id}, embedding={preview})"
 
-    def __init__(self, user_id, embedding, image=None):
+    def __init__(self, user_id, embedding):
         self.user_id = user_id
-        self.embedding = str(self.embedding[:5])
-        self.image = image
+        if embedding is None:
+            raise ValueError("Embedding não pode ser None. Verifique o pipeline de reconhecimento facial.")
+        self.embedding = embedding

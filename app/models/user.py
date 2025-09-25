@@ -9,8 +9,9 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     full_name = Column(String(150), nullable=False)
-    email = Column(String(255), unique=True, index=True, nullable=False)
+    email = Column(String(255), unique=True, index=True, nullable=True)
     matricula = Column(String(50), unique=True, index=True, nullable=False)  # ajuste conforme padrão real
+    cpf = Column(String(20), unique=True, index=True, nullable=True)
     hashed_password = Column(CHAR(60), nullable=True)  # hash fixo (bcrypt)
     is_active = Column(Boolean, default=True)
     is_admin = Column(Boolean, default=False)   # definido via LDAP
@@ -23,7 +24,7 @@ class User(Base):
     embeddings = relationship("UserEmbedding", back_populates="user", cascade=cascade)
     presences = relationship("Presence", back_populates="user", cascade=cascade)
     event_participations = relationship("EventParticipant", back_populates="user", cascade=cascade)
-
+    images = relationship("UserImage", back_populates="user", cascade="all, delete-orphan")
 
     def __repr__(self):
         return (
