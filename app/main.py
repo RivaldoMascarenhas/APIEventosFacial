@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 app = FastAPI()
-from .routes import router_auth
 
 
-app.include_router(router_auth)
+from .routes import all_routers
+
+for router in all_routers:
+    app.include_router(router)
 
 @app.get("/")
 async def root():
-  return {"message": "Hello World"}
+  return {"message": "Hello world, to consult the documentation add /docs to the url"}

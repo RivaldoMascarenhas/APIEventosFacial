@@ -6,10 +6,8 @@ router_auth = APIRouter(
 )
 
 @router_auth.get("/")
-async def root():
-  
+async def root():  
   return {"message": "Hello World"}
-
 @router_auth.post("/login")
 async def login():
   return {"message": "Login"}

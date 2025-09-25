@@ -11,6 +11,7 @@ class EventParticipant(Base):
 
     # Relações
     event = relationship("Event", back_populates="participants")
+    user = relationship("User", back_populates="event_participations")
     
     def __init__(self, event_id, user_id):
         self.event_id = event_id
